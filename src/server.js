@@ -1,4 +1,5 @@
 import { app } from "./app.js";
+import { getUsers } from "./modules/users/users.controller.js";
 
 const port = 3000;
 
@@ -40,10 +41,7 @@ let users = [
   { id: "2", name: "Bob", email: "bob@example.com" },
 ];
 
-app.get("/users", (req, res) => {
-  res.status(200).json(users);
-  console.log(res);
-});
+app.get("/users", getUsers);
 
 app.post("/users", (req, res) => {
   const { name, email } = req.body;
