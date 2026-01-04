@@ -12,3 +12,9 @@ router.get("/", getUsers1);
 router.post("/", createUser1);
 
 router.delete("/:id", deleteUser1);
+
+
+
+
+
+

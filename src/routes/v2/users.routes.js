@@ -9,6 +9,7 @@ import {
 
 export const router = Router();
 
+
 router.get("/", getUsers2);
 
 router.get("/:id", getUser2);
