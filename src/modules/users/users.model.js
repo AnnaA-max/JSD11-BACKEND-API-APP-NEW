@@ -16,10 +16,11 @@ const userSchema = new mongoose.Schema(
 );
 
 // Hash password before saving
-// userSchema.pre("save", async function () {
-//   if (!this.isModified("password")) return;
-//   this.password = await bcrypt.hash(this.password, 10);
-// });
+userSchema.pre("save", async function () {
+  // เช็คว่าพาสเวิดมีการเปลี่ยนแปลงมั้ย ถ้าไม่มีให้return จบการทำงาน ถ้ามีไปบรรทัดถัดไป
+  if (!this.isModified("password")) return;
+  this.password = await bcrypt.hash(this.password, 10); //this.passwordเข้าถึงพาส
+});
 
 // mongodb will automatically create users collection
 
