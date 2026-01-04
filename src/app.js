@@ -33,7 +33,7 @@ app.use((req, res, next) => {
 // Centralized Errpr Handling Middleware
 app.use((err, req, res, next) => {
     console.error(err.stack);  // logเพื่อดูerror
-    res.statue(err.status || 500).json({
+    res.status(err.status || 500).json({
         success: false,
         message: err.message || "Internal Server Error", 
         path: req.originalUrl,
