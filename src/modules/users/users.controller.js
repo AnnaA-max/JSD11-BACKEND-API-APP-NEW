@@ -1,6 +1,5 @@
 //keep handeler function of routes or endpoints(opertions of users)
 
-import { data } from "react-router-dom";
 import { users } from "../../mock-db/users.js";
 import { User } from "./users.model.js";
 
