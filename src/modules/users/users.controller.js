@@ -111,7 +111,7 @@ export const deleteUser2 = async (req, res, next) => {
 // ✅route handler: create a new user in the database
 // req.body คือที่อยู่ของข้อมูลที่ client ส่งมาเพื่อ “สร้างหรือแก้ไข” ข้อมูล
 export const createUser2 = async (req, res, next) => {
-  const {username, email, password} = req.body 
+  const {username, email, password, role} = req.body 
 
     // validation data
     // ถ้าไม่มีข้อมูลเหล่านี้ จะreturn
@@ -124,7 +124,7 @@ export const createUser2 = async (req, res, next) => {
     }
 
   try {
-    const doc = await User.create({username, email, password});
+    const doc = await User.create({username, email, password, role});
 
     const safe = doc.toObject()
     delete safe.password //ห้ามส่ง password กลับไปให้ client

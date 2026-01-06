@@ -1,10 +1,18 @@
 import express from "express";
 import cors from "cors";
 import { router as apiRoutes} from "./routes/index.js";
+import helmet from "helmet";
+import cookieParser  from "cookie-parser";
+import { limiter } from "./middlewares/rateLimiter.js";
 
 
 
 export const app = express();
+
+app.set("trust proxy", 1)
+
+// Global middleware ,set HTTP header
+app.use(helmet());
 
 const corsOptions = {
     origin: [
@@ -13,12 +21,19 @@ const corsOptions = {
         "http://localhost:5175",
         "https://frontend-express-app-new.vercel.app", //frontend domain
     ],
-}
+    credentials: true // ✅allow cookies to be sent
+};
 
 // install middlewares
+
 app.use(cors(corsOptions));
 
+app.use(limiter)
+
 app.use(express.json());
+
+// Middleware to parse cookies (required for cookie-base authentication)
+app.use(cookieParser());
 
 app.get("/", (req, res)=>{
     res.send("Hello World")
