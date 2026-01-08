@@ -6,8 +6,8 @@ POST http://localhost:3000/api/v2/users
 Content-Type: application/json
 
 {
-    "username": "Sunday",
-    "email": "sunday@example.com",
+    "username": "ai7",
+    "email": "ai7@example.com",
     "password": "12345678",
     "role": "admin"
 }
@@ -30,3 +30,12 @@ POST  http://localhost:3000/api/v2/users/auth/cookie/logout
 
 ### GET check user authentication
 GET  http://localhost:3000/api/v2/users/auth/cookie/me
+
+### Ask AI
+POST http://localhost:3000/api/v2/users/auth/ai/ask
+Content-Type: application/json
+
+{
+    "question": "Who are admins?",
+    "topK": 5
+}
